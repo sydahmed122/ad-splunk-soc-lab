@@ -14,7 +14,7 @@ The objective of this project is to build a real-world SOC lab where logs from a
 ## Lab Architecture
 
 <p align="center">
-<img src="screenshots/main/architecture.png" width="800">
+<img src="screenshots/main/main/architecture.png" width="800">
 </p>
 
 ---
@@ -54,7 +54,7 @@ Attack scenarios are generated using Kali Linux and Atomic Red Team to test dete
 ### 2. Active Directory Setup
 
 <p align="center">
-<img src="screenshots/main/active_directory_setup.png" width="800">
+<img src="screenshots/main/main/active_directory_setup.png" width="800">
 </p>
 
 - Installed Windows Server  
@@ -79,7 +79,7 @@ Attack scenarios are generated using Kali Linux and Atomic Red Team to test dete
 ### 5. Log Verification
 
 <p align="center">
-<img src="screenshots/main/splunk_logs_overview.png" width="800">
+<img src="screenshots/main/main/splunk_logs_overview.png" width="800">
 </p>
 
 - Verified Windows Event Logs  
@@ -90,7 +90,7 @@ Attack scenarios are generated using Kali Linux and Atomic Red Team to test dete
 ### 6. Attack Simulation
 
 <p align="center">
-<img src="screenshots/main/attack_simulation.png" width="800">
+<img src="screenshots/main/main/attack_simulation.png" width="800">
 </p>
 
 - Used Kali Linux  
