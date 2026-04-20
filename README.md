@@ -15,8 +15,7 @@ To generate real attack data, I simulated adversary behavior using Kali Linux an
 ## Lab Architecture
 
 (Add your architecture image here)
-
-Network Details:
+## Network Details:
 
 Domain: corp.local
 Network Range: 192.168.x.x
@@ -33,7 +32,7 @@ Kali Linux
 Sysmon (for enhanced logging)
 Splunk Universal Forwarder
 Atomic Red Team
- Step-by-Step Implementation
+## Step-by-Step Implementation
 🔹 1. Environment Setup
 Created a virtual lab network
 Connected all machines within the same subnet
@@ -60,12 +59,12 @@ Sysmon logs
 Ensured logs were searchable in Splunk
 🔹 6. Attack Simulation
 
-To simulate real-world threats:
+## To simulate real-world threats:
 
 Used Kali Linux for attack execution
 Used Atomic Red Team for structured attack scenarios
 
-Simulated Attacks:
+## Simulated Attacks:
 
 Brute-force login attempts
 Multiple failed authentication attempts
@@ -85,7 +84,7 @@ Within a short time window
 index=windows EventCode=4625
 | stats count by user, src_ip
 | where count > 5
- Findings
+## Findings
 Identified repeated failed login attempts
 Detected potential brute-force behavior
 Correlated events using Splunk
@@ -94,7 +93,7 @@ Investigated source IP
 Identified suspicious login patterns
 Recommended blocking malicious IP
 Escalation to higher-level analysts
- Screenshots
+## Screenshots
 
 (Add screenshots here)
 
@@ -103,7 +102,7 @@ Event logs (4625)
 Query results
 Sysmon logs
 
-Example:
+## Example:
 
 ![Splunk Logs](screenshots/logs.png)
  Key Learnings
@@ -117,7 +116,7 @@ Integrate Shuffle (SOAR) for automation
 Connect with TheHive for case management
 Create additional detection rules
 Implement real-time alerting
- Author
+## Author
 
 Syed Mujtaba Ahmed
-Aspiring SOC Analyst
+ SOC Analyst
