@@ -2,17 +2,17 @@
 Built a SOC lab integrating Active Directory with Splunk SIEM to monitor and analyze security logs. Configured log forwarding using Sysmon and Splunk Universal Forwarder, and simulated attacks (brute-force, failed logins) using Kali Linux and Atomic Red Team. Detected suspicious activity using Splunk queries and event logs.
 
  SOC Lab: Active Directory Monitoring with Splunk
- Objective
+## Objective
 
 The objective of this project is to design and implement a real-world SOC (Security Operations Center) lab where logs from an Active Directory environment are centrally collected, monitored, and analyzed using Splunk SIEM to detect and investigate suspicious activities such as brute-force attacks and failed login attempts.
 
- Project Overview
+## Project Overview
 
 In this project, I built a complete SOC lab environment simulating an enterprise network. The setup includes a Windows Server configured as an Active Directory Domain Controller, a Windows 10 client machine, and a Splunk server for centralized log collection and analysis.
 
 To generate real attack data, I simulated adversary behavior using Kali Linux and Atomic Red Team. The generated logs were ingested into Splunk and analyzed using detection queries to identify malicious activity.
 
- Lab Architecture
+## Lab Architecture
 
 (Add your architecture image here)
 
