@@ -1,157 +1,103 @@
-<h1 align="center">🛡️ SOC Lab: Active Directory Monitoring with Splunk</h1>
+# SOC Lab: Active Directory + Splunk SIEM Detection Environment
 
-<p align="center">
-A hands-on SOC project simulating real-world log monitoring, attack detection, and incident analysis using Splunk SIEM.
-</p>
+![GitHub repo size](https://img.shields.io/github/repo-size/your-username/your-repo-name)
+![GitHub last commit](https://img.shields.io/github/last-commit/your-username/your-repo-name)
+![License](https://img.shields.io/github/license/your-username/your-repo-name)
 
-<hr>
+## Overview
 
-<h2>📌 Objective</h2>
-<p>
-The objective of this project is to build a real-world SOC lab where logs from an Active Directory environment are centrally collected, monitored, and analyzed using Splunk SIEM to detect suspicious activities such as brute-force attacks and failed login attempts.
-</p>
+This project demonstrates the design and implementation of a real-world **Security Operations Center (SOC) lab environment** using **Active Directory** and **Splunk SIEM**. The lab simulates an enterprise network where logs from domain-joined systems are centrally collected, monitored, and analyzed to detect suspicious activity. A clear README is valuable because it tells readers what the project does, how to use it, and why it matters [page:1][page:2].
 
-<hr>
+The environment includes a Windows Server configured as an **Active Directory Domain Controller**, a **Windows 10 client**, a **Splunk server** for log aggregation and analysis, and a **Kali Linux attacker machine**. Sysmon and Splunk Universal Forwarders are deployed to provide detailed telemetry and real-time log forwarding.
 
-<h2>🧭 Project Overview</h2>
-<p>
-This project simulates an enterprise SOC environment with Active Directory, a Windows 10 client, and Splunk SIEM. Logs are collected using Sysmon and Splunk Universal Forwarder, and attack scenarios are generated using Kali Linux and Atomic Red Team to test detection capabilities.
-</p>
+## Architecture
 
-<hr>
+The lab topology includes:
+- **Domain:** `corp.local`
+- **Network:** `192.168.1.0/24`
+- **Splunk Server:** `192.168.10.10`
+- **Active Directory Server:** `192.168.10.7`
+- **Attacker Machine:** `192.168.10.250`
 
-<h2>🏗️ Lab Architecture</h2>
-<p><i>(Add your architecture image below)</i></p>
+The diagram below shows the setup you built.
 
-<img src="screenshots/architecture.png" width="700">
+[image:1]
 
-<hr>
+## Features
 
-<h2>⚙️ Tools & Technologies</h2>
-<ul>
-  <li>Splunk SIEM</li>
-  <li>Active Directory (Windows Server)</li>
-  <li>Windows 10</li>
-  <li>Kali Linux</li>
-  <li>Sysmon</li>
-  <li>Splunk Universal Forwarder</li>
-  <li>Atomic Red Team</li>
-</ul>
+- Centralized log collection using **Splunk Universal Forwarder**.
+- Endpoint telemetry collection using **Sysmon**.
+- Windows authentication event monitoring with focus on **Event ID 4625**.
+- Detection of failed login attempts and possible brute-force activity.
+- Simulation of adversary behavior using **Kali Linux** and **Atomic Red Team**.
+- SOC-style investigation workflow for alerting and log analysis.
 
-<hr>
+## Tools Used
 
-<h2>🧱 Step-by-Step Implementation</h2>
+- **Windows Server**
+- **Windows 10**
+- **Active Directory**
+- **Splunk Enterprise**
+- **Sysmon**
+- **Splunk Universal Forwarder**
+- **Kali Linux**
+- **Atomic Red Team**
 
-<h3>1️⃣ Environment Setup</h3>
-<ul>
-  <li>Created virtual lab network</li>
-  <li>Connected all systems within same subnet</li>
-</ul>
+## Detection Scenarios
 
-<h3>2️⃣ Active Directory Setup</h3>
-<ul>
-  <li>Installed Windows Server</li>
-  <li>Configured Domain Controller (corp.local)</li>
-  <li>Created users</li>
-</ul>
+The project generated and analyzed security events such as:
+- Failed login attempts.
+- Suspicious authentication behavior.
+- Brute-force-style login activity.
+- Endpoint process telemetry through Sysmon.
+- Forwarded logs for correlation and investigation in Splunk.
 
-<h3>3️⃣ Splunk Setup</h3>
-<ul>
-  <li>Installed Splunk Enterprise</li>
-  <li>Configured indexes and data inputs</li>
-</ul>
+## Skills Demonstrated
 
-<h3>4️⃣ Log Forwarding</h3>
-<ul>
-  <li>Installed Sysmon on endpoints</li>
-  <li>Installed Splunk Universal Forwarder</li>
-  <li>Forwarded logs to Splunk</li>
-</ul>
+This project shows practical experience in:
+- SOC lab design.
+- SIEM configuration.
+- Windows event log analysis.
+- Threat detection and investigation.
+- Log forwarding and telemetry collection.
+- Basic adversary simulation in a controlled environment.
 
-<h3>5️⃣ Log Verification</h3>
-<ul>
-  <li>Verified Windows Event Logs</li>
-  <li>Verified Sysmon logs in Splunk</li>
-</ul>
+## How It Works
 
-<h3>6️⃣ Attack Simulation</h3>
-<ul>
-  <li>Used Kali Linux</li>
-  <li>Used Atomic Red Team</li>
-  <li>Simulated brute-force attacks</li>
-</ul>
+1. Windows systems are joined to the domain.
+2. Sysmon collects detailed endpoint activity.
+3. Splunk Universal Forwarder sends logs to the Splunk server.
+4. Authentication and process events are indexed in Splunk.
+5. Detection logic identifies suspicious behavior.
+6. Analysts can investigate and validate alerts using Splunk queries.
 
-<hr>
+## Example Splunk Query
 
-<h2>🔍 Detection Use Case: Brute Force Attack</h2>
+```spl
+index=windows sourcetype=WinEventLog:Security EventCode=4625
+| stats count by Account_Name, Workstation_Name, Failure_Reason
+| sort -count
+```
 
-<h3>🎯 Goal</h3>
-<p>Detect multiple failed login attempts indicating brute-force behavior.</p>
+## Future Improvements
 
-<h3>📊 Logs Used</h3>
-<ul>
-  <li>Windows Security Logs</li>
-  <li>Event ID 4625 (Failed Login)</li>
-</ul>
+Planned enhancements for this lab include:
+- Integrating **Shuffle** for SOAR-based automation.
+- Expanding detection rules and alert coverage.
+- Adding more attack scenarios for validation.
+- Building incident response playbooks.
+- Improving dashboards for SOC monitoring.
 
-<h3>🧠 Detection Logic</h3>
-<ul>
-  <li>Multiple failed logins</li>
-  <li>Same user or IP</li>
-  <li>Short time duration</li>
-</ul>
+## Project Value
 
-<h3>🔎 Splunk Query</h3>
-<pre>
-index=windows EventCode=4625
-| stats count by user, src_ip
-| where count > 5
-</pre>
+This lab reflects how a security analyst monitors authentication activity, identifies anomalies, and responds to threats in a controlled enterprise-like environment. It also demonstrates hands-on knowledge of SIEM workflows, endpoint visibility, and detection engineering.
 
-<h3>🚨 Findings</h3>
-<ul>
-  <li>Detected repeated failed login attempts</li>
-  <li>Identified brute-force activity</li>
-</ul>
+## Contact
 
-<h3>🛡️ SOC Response</h3>
-<ul>
-  <li>Investigated source IP</li>
-  <li>Recommended blocking attacker</li>
-  <li>Escalated incident</li>
-</ul>
+Created by **Your Name**  
+GitHub: `your-username`  
+LinkedIn: `your-linkedin-profile`
 
-<hr>
+## License
 
-<h2>📸 Screenshots</h2>
-
-<p><b>Splunk Logs:</b></p>
-<img src="screenshots/logs.png" width="700">
-
-<p><b>Detection Results:</b></p>
-<img src="screenshots/detection.png" width="700">
-
-<hr>
-
-<h2>🧠 Key Learnings</h2>
-<ul>
-  <li>SIEM log analysis</li>
-  <li>Windows Event monitoring</li>
-  <li>Threat detection techniques</li>
-  <li>SOC workflow understanding</li>
-</ul>
-
-<hr>
-
-<h2>🚀 Future Improvements</h2>
-<ul>
-  <li>Integrate Shuffle (SOAR)</li>
-  <li>Add more detection rules</li>
-  <li>Enable alert automation</li>
-</ul>
-
-<hr>
-
-<h2>👨‍💻 Author</h2>
-<p><b>Syed Mujtaba Ahmed</b><br>
-Aspiring SOC Analyst</p>
+This project is licensed under the **MIT License**.
