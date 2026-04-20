@@ -1,122 +1,157 @@
-# Active-Directory-Monitoring-with-Splunk
-Built a SOC lab integrating Active Directory with Splunk SIEM to monitor and analyze security logs. Configured log forwarding using Sysmon and Splunk Universal Forwarder, and simulated attacks (brute-force, failed logins) using Kali Linux and Atomic Red Team. Detected suspicious activity using Splunk queries and event logs.
+<h1 align="center">🛡️ SOC Lab: Active Directory Monitoring with Splunk</h1>
 
- SOC Lab: Active Directory Monitoring with Splunk
-## Objective
+<p align="center">
+A hands-on SOC project simulating real-world log monitoring, attack detection, and incident analysis using Splunk SIEM.
+</p>
 
-The objective of this project is to design and implement a real-world SOC (Security Operations Center) lab where logs from an Active Directory environment are centrally collected, monitored, and analyzed using Splunk SIEM to detect and investigate suspicious activities such as brute-force attacks and failed login attempts.
+<hr>
 
-## Project Overview
+<h2>📌 Objective</h2>
+<p>
+The objective of this project is to build a real-world SOC lab where logs from an Active Directory environment are centrally collected, monitored, and analyzed using Splunk SIEM to detect suspicious activities such as brute-force attacks and failed login attempts.
+</p>
 
-In this project, I built a complete SOC lab environment simulating an enterprise network. The setup includes a Windows Server configured as an Active Directory Domain Controller, a Windows 10 client machine, and a Splunk server for centralized log collection and analysis.
+<hr>
 
-To generate real attack data, I simulated adversary behavior using Kali Linux and Atomic Red Team. The generated logs were ingested into Splunk and analyzed using detection queries to identify malicious activity.
+<h2>🧭 Project Overview</h2>
+<p>
+This project simulates an enterprise SOC environment with Active Directory, a Windows 10 client, and Splunk SIEM. Logs are collected using Sysmon and Splunk Universal Forwarder, and attack scenarios are generated using Kali Linux and Atomic Red Team to test detection capabilities.
+</p>
 
-## Lab Architecture
+<hr>
 
-(Add your architecture image here)
-## Network Details:
+<h2>🏗️ Lab Architecture</h2>
+<p><i>(Add your architecture image below)</i></p>
 
-Domain: corp.local
-Network Range: 192.168.x.x
-Component	Role
-Active Directory (Windows Server)	Domain Controller
-Windows 10	Client Machine
-Splunk Server	SIEM
-Kali Linux	Attacker Machine
- Tools & Technologies Used
-Splunk SIEM
-Active Directory (Windows Server)
-Windows 10
-Kali Linux
-Sysmon (for enhanced logging)
-Splunk Universal Forwarder
-Atomic Red Team
-## Step-by-Step Implementation
-🔹 1. Environment Setup
-Created a virtual lab network
-Connected all machines within the same subnet
-Assigned IP addresses
-🔹 2. Active Directory Configuration
-Installed Windows Server
-Promoted it to Domain Controller
-Configured domain: corp.local
-Created users and configured basic policies
-🔹 3. Splunk SIEM Setup
-Installed Splunk Enterprise
-Configured data inputs
-Set up indexes for log ingestion
-Verified Splunk web interface
-🔹 4. Log Collection & Forwarding
-On Active Directory & Windows 10:
-Installed Sysmon to generate detailed logs
-Installed Splunk Universal Forwarder
-Configured log forwarding to Splunk server
-🔹 5. Log Verification in Splunk
-Verified ingestion of:
-Windows Event Logs
-Sysmon logs
-Ensured logs were searchable in Splunk
-🔹 6. Attack Simulation
+<img src="screenshots/architecture.png" width="700">
 
-## To simulate real-world threats:
+<hr>
 
-Used Kali Linux for attack execution
-Used Atomic Red Team for structured attack scenarios
+<h2>⚙️ Tools & Technologies</h2>
+<ul>
+  <li>Splunk SIEM</li>
+  <li>Active Directory (Windows Server)</li>
+  <li>Windows 10</li>
+  <li>Kali Linux</li>
+  <li>Sysmon</li>
+  <li>Splunk Universal Forwarder</li>
+  <li>Atomic Red Team</li>
+</ul>
 
-## Simulated Attacks:
+<hr>
 
-Brute-force login attempts
-Multiple failed authentication attempts
- Detection Use Case: Brute Force Attack
- Objective
+<h2>🧱 Step-by-Step Implementation</h2>
 
-Detect multiple failed login attempts indicating a brute-force attack.
+<h3>1️⃣ Environment Setup</h3>
+<ul>
+  <li>Created virtual lab network</li>
+  <li>Connected all systems within same subnet</li>
+</ul>
 
- Logs Analyzed
-Windows Security Event Logs
-Event ID 4625 (Failed Logon)
- Detection Logic
-Multiple failed login attempts
-Same user or source IP
-Within a short time window
- Splunk Query
+<h3>2️⃣ Active Directory Setup</h3>
+<ul>
+  <li>Installed Windows Server</li>
+  <li>Configured Domain Controller (corp.local)</li>
+  <li>Created users</li>
+</ul>
+
+<h3>3️⃣ Splunk Setup</h3>
+<ul>
+  <li>Installed Splunk Enterprise</li>
+  <li>Configured indexes and data inputs</li>
+</ul>
+
+<h3>4️⃣ Log Forwarding</h3>
+<ul>
+  <li>Installed Sysmon on endpoints</li>
+  <li>Installed Splunk Universal Forwarder</li>
+  <li>Forwarded logs to Splunk</li>
+</ul>
+
+<h3>5️⃣ Log Verification</h3>
+<ul>
+  <li>Verified Windows Event Logs</li>
+  <li>Verified Sysmon logs in Splunk</li>
+</ul>
+
+<h3>6️⃣ Attack Simulation</h3>
+<ul>
+  <li>Used Kali Linux</li>
+  <li>Used Atomic Red Team</li>
+  <li>Simulated brute-force attacks</li>
+</ul>
+
+<hr>
+
+<h2>🔍 Detection Use Case: Brute Force Attack</h2>
+
+<h3>🎯 Goal</h3>
+<p>Detect multiple failed login attempts indicating brute-force behavior.</p>
+
+<h3>📊 Logs Used</h3>
+<ul>
+  <li>Windows Security Logs</li>
+  <li>Event ID 4625 (Failed Login)</li>
+</ul>
+
+<h3>🧠 Detection Logic</h3>
+<ul>
+  <li>Multiple failed logins</li>
+  <li>Same user or IP</li>
+  <li>Short time duration</li>
+</ul>
+
+<h3>🔎 Splunk Query</h3>
+<pre>
 index=windows EventCode=4625
 | stats count by user, src_ip
 | where count > 5
-## Findings
-Identified repeated failed login attempts
-Detected potential brute-force behavior
-Correlated events using Splunk
- SOC Response (Simulated)
-Investigated source IP
-Identified suspicious login patterns
-Recommended blocking malicious IP
-Escalation to higher-level analysts
-## Screenshots
+</pre>
 
-(Add screenshots here)
+<h3>🚨 Findings</h3>
+<ul>
+  <li>Detected repeated failed login attempts</li>
+  <li>Identified brute-force activity</li>
+</ul>
 
-Splunk dashboard
-Event logs (4625)
-Query results
-Sysmon logs
+<h3>🛡️ SOC Response</h3>
+<ul>
+  <li>Investigated source IP</li>
+  <li>Recommended blocking attacker</li>
+  <li>Escalated incident</li>
+</ul>
 
-## Example:
+<hr>
 
-![Splunk Logs](screenshots/logs.png)
- Key Learnings
-Understanding how SIEM collects and analyzes logs
-Working with Windows Event Logs and Sysmon
-Detecting authentication-based attacks
-Hands-on experience with SOC workflows
-Importance of log correlation and monitoring
- Future Improvements
-Integrate Shuffle (SOAR) for automation
-Connect with TheHive for case management
-Create additional detection rules
-Implement real-time alerting
-## Author
+<h2>📸 Screenshots</h2>
 
-Syed Mujtaba Ahmed
- SOC Analyst
+<p><b>Splunk Logs:</b></p>
+<img src="screenshots/logs.png" width="700">
+
+<p><b>Detection Results:</b></p>
+<img src="screenshots/detection.png" width="700">
+
+<hr>
+
+<h2>🧠 Key Learnings</h2>
+<ul>
+  <li>SIEM log analysis</li>
+  <li>Windows Event monitoring</li>
+  <li>Threat detection techniques</li>
+  <li>SOC workflow understanding</li>
+</ul>
+
+<hr>
+
+<h2>🚀 Future Improvements</h2>
+<ul>
+  <li>Integrate Shuffle (SOAR)</li>
+  <li>Add more detection rules</li>
+  <li>Enable alert automation</li>
+</ul>
+
+<hr>
+
+<h2>👨‍💻 Author</h2>
+<p><b>Syed Mujtaba Ahmed</b><br>
+Aspiring SOC Analyst</p>
