@@ -112,7 +112,7 @@ Logs are collected using Sysmon and forwarded via Splunk Universal Forwarder. At
 </ul>
 
 <p align="center">
-<img src="screenshots/main/attack_simulation.png" width="800">
+<img src="screenshots/main/alerts_triggered+setup.png" width="800">
 </p>
 
 <hr>
