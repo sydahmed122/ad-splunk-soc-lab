@@ -160,7 +160,7 @@ Suspicious PowerShell activity was monitored using Sysmon logs and analyzed in S
 </p>
 
 <p align="center">
-<img src="screenshots/main/splunk_detection_powershell.png" width="800">
+<img src="screenshots/main/splunk_log_3.png" width="800">
 </p>
 
 <hr>
@@ -172,7 +172,11 @@ Custom alerts were configured in Splunk to notify when suspicious activities suc
 </p>
 
 <p align="center">
-<img src="screenshots/main/alerts_triggered.png" width="800">
+<img src="screenshots/main/splunk_log_6.png" width="800">
+</p>
+
+<p align="center">
+<img src="screenshots/main/splunk_log_7.png" width="800">
 </p>
 
 <hr>
