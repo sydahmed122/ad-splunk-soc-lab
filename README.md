@@ -180,6 +180,22 @@ Custom alerts were configured in Splunk to notify when suspicious activities suc
 </p>
 
 <hr>
+<hr>
+
+<h2>SOC Analyst Investigation Summary</h2>
+
+<ul>
+<li>Multiple failed login attempts detected from a single source</li>
+<li>Event ID 4625 spikes observed in Splunk</li>
+<li>Correlated logs across endpoints using SIEM</li>
+<li>Identified brute-force attack pattern</li>
+<li>Verified attack using lab simulation</li>
+</ul>
+
+<h3>Final Verdict</h3>
+<p>
+Confirmed brute-force attack activity against domain accounts. Recommended mitigation includes IP blocking, account lockout policies, and continuous monitoring.
+</p>
 
 <h2>Incident Analysis (SOC Perspective)</h2>
 
