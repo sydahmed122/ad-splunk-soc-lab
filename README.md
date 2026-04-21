@@ -113,6 +113,10 @@ Detect multiple failed login attempts indicating brute-force behavior.
 ---
 
 ### Detection Logic
+<p align="center">
+<img src="screenshots/main/bruteforce_detection.png" width="800">
+</p>
+
 - Multiple failed logins  
 - Same user or IP  
 - Short time duration  
