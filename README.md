@@ -14,7 +14,7 @@ The objective of this project is to build a real-world SOC lab where logs from a
 ## Lab Architecture
 
 <p align="center">
-<img src="screenshots/main/main/architecture.png" width="800">
+<img src="screenshots/main/architecture.png" width="800">
 </p>
 
 ---
